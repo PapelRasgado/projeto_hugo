@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Professor implements Identificavel {
+public class Turma implements Identificavel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "professor_seq_gen")
