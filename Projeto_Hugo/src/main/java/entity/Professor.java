@@ -23,7 +23,7 @@ public class Professor implements Identificavel {
 	private String nome;
 	
 	@OneToMany(mappedBy="professor")
-	private Set<Turma> turmas;
+	private Set<Disciplina> disciplinas;
 
 	public Long getId() {
 		return id;
@@ -41,12 +41,12 @@ public class Professor implements Identificavel {
 		this.nome = nome;
 	}
 	
-	public Set<Turma> getTurmas() {
-		return turmas;
+	public Set<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 	
-	public void setTurmas(Set<Turma> turmas) {
-		this.turmas = turmas;
+	public void setDisciplinas(Set<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 	public Professor(Long id, String nome) {

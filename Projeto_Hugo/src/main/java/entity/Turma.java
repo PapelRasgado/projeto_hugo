@@ -1,6 +1,7 @@
 
 package entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -8,22 +9,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Turma implements Identificavel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "professor_seq_gen")
-	@SequenceGenerator(name = "professor_seq_gen", sequenceName = "professor_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "turma_seq_gen")
+	@SequenceGenerator(name = "turma_seq_gen", sequenceName = "turma_id_seq")
 	@Column(name = "id_professor")
 	private Long id;
 
 	private String nome;
 	
-	@OneToMany(mappedBy="professor")
-	private Set<Turma> turmas;
+	@ManyToMany
+	@JoinColumn(name="id_aluno")
+	private Set<Aluno> alunos;
+	
+	@ManyToMany
+	@JoinColumn(name="id_disciplina")
+	private Set<Disciplina> disciplinas;
 
 	public Long getId() {
 		return id;
@@ -40,23 +47,46 @@ public class Turma implements Identificavel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public Set<Turma> getTurmas() {
-		return turmas;
-	}
-	
-	public void setTurmas(Set<Turma> turmas) {
-		this.turmas = turmas;
+
+	public Set<Aluno> getAlunos() {
+		return alunos;
 	}
 
-	public Professor(Long id, String nome) {
+	public void setAlunos(Set<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+	
+	public Set<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	
+	public void setDisciplinas(Set<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+	
+	public void addAluno(Aluno aluno) {
+		alunos.add(aluno);
+	}
+	
+	public void addDisciplina(Disciplina disciplina) {
+		disciplinas.add(disciplina);
+	}
+
+	public Turma(String nome) {
 		super();
-		this.id = id;
 		this.nome = nome;
 	}
+	
+	public Turma(String nome, Set<Aluno> alunos, Set<Disciplina> disciplinas) {
+		super();
+		this.nome = nome;
+		this.alunos = alunos;
+		this.disciplinas = disciplinas;
+	}
 
-	public Professor() {
-
+	public Turma() {
+		alunos =  new HashSet<>();
+		disciplinas = new HashSet<>();
 	}
 
 }
