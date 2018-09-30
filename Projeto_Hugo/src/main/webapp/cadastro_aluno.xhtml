@@ -1,0 +1,73 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="theme.css" />
+</h:head>
+<h:body style="margin-left: 20px;">
+
+	<p:tabMenu activeIndex="#{param.i}">
+		<p:menuitem value="Aluno" outcome="/cadastro_aluno"
+			icon="fa fa-gamepad">
+			<f:param name="i" value="0" />
+		</p:menuitem>
+		<p:menuitem value="Turma" outcome="/cadastro_turma" icon="fa fa-tasks">
+			<f:param name="i" value="1" />
+		</p:menuitem>
+		<p:menuitem value="Professor" outcome="/cadastro_professor"
+			icon="fa fa-diamond">
+			<f:param name="i" value="2" />
+		</p:menuitem>
+		<!-- <p:menuitem value="Disciplina" outcome="/cadastro_disciplina"
+			icon="fa fa-envelope">
+			<f:param name="i" value="3" />
+		</p:menuitem>-->
+	</p:tabMenu>
+	<div class="container">
+		<h4 class="titulo">Cadastrar Aluno:</h4>
+	</div>
+	<h:form id="container">
+		<p:panelGrid>
+			<div class="ui-g">
+				<p:panelGrid columns="2" class="cell">
+					<span class="ui-inputgroup-addon">Nome:</span>
+					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+					<p:inputText id="nome" value="#{alunoBean.entidade.nome}" />
+				</p:panelGrid>
+
+			</div>
+			<p:commandButton class="btn" value="Salvar"
+				actionListener="#{alunoBean.save()}" update="container" />
+			<p:commandButton class="btn" update="container" value="Cancelar"
+				action="#{alunoBean.limpar()}" />
+		</p:panelGrid>
+
+		<p:dataTable class="datable" id="dataTableCarta" var="aluno"
+			value="#{alunoBean.entidades}">
+			<p:column headerText="Id">
+				<h:outputText value="#{aluno.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{aluno.nome}" />
+			</p:column>
+			<p:column headerText="Remover">
+				<p:commandButton action="#{alunoBean.remove(aluno)}"
+					update="container" value="Remover" />
+			</p:column>
+			<p:column headerText="Editar">
+				<p:commandButton action="#{alunoBean.editar(aluno.id)}"
+					update="container" value="Editar" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</HTML>

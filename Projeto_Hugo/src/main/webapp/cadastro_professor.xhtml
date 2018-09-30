@@ -1,0 +1,89 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="theme.css" />
+</h:head>
+<h:body style="margin-left: 20px;">
+
+	<p:tabMenu activeIndex="#{param.i}">
+		<p:menuitem value="Aluno" outcome="/cadastro_aluno"
+			icon="fa fa-gamepad">
+			<f:param name="i" value="0" />
+		</p:menuitem>
+		<p:menuitem value="Turma" outcome="/cadastro_turma" icon="fa fa-tasks">
+			<f:param name="i" value="1" />
+		</p:menuitem>
+		<p:menuitem value="Professor" outcome="/cadastro_professor"
+			icon="fa fa-diamond">
+			<f:param name="i" value="2" />
+		</p:menuitem>
+		<!-- <p:menuitem value="Disciplina" outcome="/cadastro_disciplina"
+			icon="fa fa-envelope">
+			<f:param name="i" value="3" />
+		</p:menuitem>-->
+	</p:tabMenu>
+	<div class="container">
+		<h4 class="titulo">Cadastrar Professor:</h4>
+	</div>
+	<h:form id="container">
+		<p:panelGrid>
+			<div class="ui-g">
+				<p:panelGrid columns="2" class="cell">
+					<span class="ui-inputgroup-addon">Nome:</span>
+					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+					<p:inputText id="nome" value="#{professorBean.entidade.nome}" />
+				</p:panelGrid>
+				<p:panelGrid columns="2" class="cell">
+					<span class="ui-inputgroup-addon">Email:</span>
+					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+					<p:inputText id="email" value="#{professorBean.entidade.email}" />
+				</p:panelGrid>
+				<p:panelGrid columns="2" class="cell">
+					<span class="ui-inputgroup-addon">Senha:</span>
+					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+					<p:password id="password" value="#{professorBean.senha}" />
+				</p:panelGrid>
+
+			</div>
+			<p:commandButton class="btn" update="container" value="Salvar"
+				actionListener="#{professorBean.save()}" />
+			<p:commandButton class="btn" update="container" value="Cancelar"
+				action="#{professorBean.limpar()}" />
+		</p:panelGrid>
+
+		<p:dataTable id="dataTableCarta" var="professor"
+			value="#{professorBean.entidades}">
+			<p:column headerText="Id">
+				<h:outputText value="#{professor.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{professor.nome}" />
+			</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{professor.email}" />
+			</p:column>
+			<p:column headerText="Senha">
+				<h:outputText value="#{professor.hashSenha}" />
+			</p:column>
+			<p:column headerText="Remover">
+				<p:commandButton action="#{professorBean.remove(professor)}"
+					update="container" value="Remover" />
+			</p:column>
+			<p:column headerText="Editar">
+				<p:commandButton action="#{professorBean.editar(professor.id)}"
+					update="container" value="Editar" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</HTML>

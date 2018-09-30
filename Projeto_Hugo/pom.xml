@@ -4,6 +4,15 @@
   <artifactId>Projeto_Hugo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <repositories>
+		<!-- https://www.primefaces.org/downloads/ -->
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
   <dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -28,12 +37,10 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/trontastic -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>trontastic</artifactId>
+			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>

@@ -22,6 +22,10 @@ public class Professor implements Identificavel {
 
 	private String nome;
 	
+	private String email;
+	
+	private byte[] hashSenha;
+	
 	@OneToMany(mappedBy="professor")
 	private Set<Disciplina> disciplinas;
 
@@ -48,16 +52,35 @@ public class Professor implements Identificavel {
 	public void setDisciplinas(Set<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setHashSenha(byte[] hashSenha) {
+		this.hashSenha = hashSenha;
+	}
+	
+	public byte[] getHashSenha() {
+		return hashSenha;
+	}
 
-	public Professor(Long id, String nome) {
+	public Professor(Long id, String nome, String email, byte[] hashSenha) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.email = email;
+		this.hashSenha = hashSenha;
 	}
 
 	public Professor() {
 
 	}
+
 
 }
 

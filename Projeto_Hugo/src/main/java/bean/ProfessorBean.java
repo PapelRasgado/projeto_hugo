@@ -1,5 +1,7 @@
 package bean;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +25,8 @@ public class ProfessorBean implements Serializable {
 	private ProfessorService service;
 
 	protected Professor entidade;
+	
+	protected String senha;
 
 	protected Collection<Professor> entidades;
 
@@ -56,7 +60,15 @@ public class ProfessorBean implements Serializable {
 		this.entidades = entidades;
 	}
 
-	public void save() {
+	public void save(){
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(senha.getBytes());
+			entidade.setHashSenha(md.digest());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
 		getService().save(entidade);
 		limpar();
 	}
@@ -77,6 +89,14 @@ public class ProfessorBean implements Serializable {
 
 	public ProfessorService getService() {
 		return service;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

@@ -44,5 +44,10 @@ public class Aluno implements Identificavel {
 	public Aluno() {
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Aluno [id=" + id + ", nome=" + nome + "]";
+	}
 
 }
