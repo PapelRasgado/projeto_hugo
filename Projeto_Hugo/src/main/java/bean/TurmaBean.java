@@ -1,6 +1,7 @@
 package bean;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -27,7 +28,7 @@ public class TurmaBean implements Serializable {
 	@Inject
 	private AlunoService serviceAluno;
 	
-//	protected List<Long> alunos;
+	protected List<Long> alunos;
 
 	protected Turma entidade;
 
@@ -64,9 +65,9 @@ public class TurmaBean implements Serializable {
 	}
 
 	public void save() {
-//		for (Long id : alunos) {
-//			entidade.addAluno(getServiceAluno().getByID(id));
-//		}
+		for (Long id : alunos) {
+			entidade.addAluno(getServiceAluno().getByID(id));
+		}
 		getService().save(entidade);
 		limpar();
 	}
@@ -93,12 +94,12 @@ public class TurmaBean implements Serializable {
 		return serviceAluno;
 	}
 	
-//	public List<Long> getAlunos() {
-//		return alunos;
-//	}
-//	
-//	public void setAlunos(List<Long> alunos) {
-//		this.alunos = alunos;
-//	}
+	public List<Long> getAlunos() {
+		return alunos;
+	}
+	
+	public void setAlunos(List<Long> alunos) {
+		this.alunos = alunos;
+	}
 
 }

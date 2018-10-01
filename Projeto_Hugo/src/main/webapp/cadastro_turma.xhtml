@@ -44,8 +44,8 @@
 				<p:panelGrid columns="2" class="cell">
 					<span class="ui-inputgroup-addon" style="min-width: 4.5em;">Alunos:</span>
 					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-					<p:selectManyMenu id="alunos" value="#{turmaBean.entidade.alunos}"
-						var="a" filter="true" filterMatchMode="contains"
+					<p:selectManyMenu id="alunos" value="#{turmaBean.alunos}"
+						var="a" filter="true" filterMatchMode="contains" validator="alunoValidator" converter="alunoConverter"
 						showCheckbox="true" class="cell-2">
 						<f:selectItems value="#{alunoBean.entidades}" var="aluno"
 							itemLabel="#{aluno.nome}" itemValue="#{aluno}" />

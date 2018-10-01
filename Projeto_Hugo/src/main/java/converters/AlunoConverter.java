@@ -10,7 +10,7 @@ import dao.AlunoDAO;
 import entity.Aluno;
 
 
-@FacesConverter(forClass=Aluno.class)
+@FacesConverter("alunoConverter")
 public class AlunoConverter implements Converter{
 
 	@Inject
