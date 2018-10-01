@@ -29,8 +29,7 @@ public class Turma implements Identificavel {
 	@JoinColumn(name="id_aluno")
 	private Set<Aluno> alunos;
 	
-	@OneToMany
-	@JoinColumn(name="id_disciplina")
+	@OneToMany(mappedBy="turma")
 	private Set<Disciplina> disciplinas;
 
 	public Long getId() {

@@ -1,0 +1,44 @@
+.ui-datatable {
+	padding-top: 20px;
+}
+
+body{
+	background: #4a4a4a;
+}
+
+.btn {
+	margin-top: 20px;
+}
+
+.ui-inputgroup {
+	border-color: #9fda58;
+}
+
+.ui-widget-content {
+	font-weight: bold;
+	color: #000000;
+	background: #9fda58 url(/Projeto_Hugo/javax.faces.resource/images/ui-bg_gloss-wave_85_9fda58_500x100.png.xhtml?ln=primefaces-trontastic) 50% 50% repeat-x;
+}
+
+.container {
+	border-radius: 8px;
+	background: #9fda58 url(/Projeto_Hugo/javax.faces.resource/images/ui-bg_gloss-wave_85_9fda58_500x100.png.xhtml?ln=primefaces-trontastic) 50% 50% repeat-x;
+	max-width: -webkit-fill-available;
+	margin-top: 10px;
+}
+
+.cell {
+	margin: 3px;
+}
+
+.cell-2 {
+	min-width: 200px;
+}
+
+.ui-panelgrid-cell {
+	min-width: 128px;
+}
+
+.ui-selectonemenu-label {
+	min-width: 163px
+}
