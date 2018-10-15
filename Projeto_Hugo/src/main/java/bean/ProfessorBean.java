@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
