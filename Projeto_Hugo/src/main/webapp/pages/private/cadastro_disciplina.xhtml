@@ -14,18 +14,18 @@
 <h:body style="margin-left: 20px;">
 
 	<p:tabMenu activeIndex="#{param.i}">
-		<p:menuitem value="Aluno" outcome="/cadastro_aluno"
+		<p:menuitem value="Aluno" outcome="/pages/private/cadastro_aluno"
 			icon="fa fa-gamepad">
 			<f:param name="i" value="0" />
 		</p:menuitem>
-		<p:menuitem value="Turma" outcome="/cadastro_turma" icon="fa fa-tasks">
+		<p:menuitem value="Turma" outcome="/pages/private/cadastro_turma" icon="fa fa-tasks">
 			<f:param name="i" value="1" />
 		</p:menuitem>
-		<p:menuitem value="Professor" outcome="/cadastro_professor"
+		<p:menuitem value="Professor" outcome="/pages/private/cadastro_professor"
 			icon="fa fa-diamond">
 			<f:param name="i" value="2" />
 		</p:menuitem>
-		<p:menuitem value="Disciplina" outcome="/cadastro_disciplina"
+		<p:menuitem value="Disciplina" outcome="/pages/private/cadastro_disciplina"
 			icon="fa fa-envelope">
 			<f:param name="i" value="3" />
 		</p:menuitem>

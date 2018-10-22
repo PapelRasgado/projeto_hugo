@@ -14,73 +14,71 @@
 <h:body style="margin-left: 20px;">
 
 	<p:tabMenu activeIndex="#{param.i}">
-		<p:menuitem value="Aluno" outcome="/cadastro_aluno"
+		<p:menuitem value="Aluno" outcome="/pages/private/cadastro_aluno"
 			icon="fa fa-gamepad">
 			<f:param name="i" value="0" />
 		</p:menuitem>
-		<p:menuitem value="Turma" outcome="/cadastro_turma" icon="fa fa-tasks">
+		<p:menuitem value="Turma" outcome="/pages/private/cadastro_turma" icon="fa fa-tasks">
 			<f:param name="i" value="1" />
 		</p:menuitem>
-		<p:menuitem value="Professor" outcome="/cadastro_professor"
+		<p:menuitem value="Professor" outcome="/pages/private/cadastro_professor"
 			icon="fa fa-diamond">
 			<f:param name="i" value="2" />
 		</p:menuitem>
-		<p:menuitem value="Disciplina" outcome="/cadastro_disciplina"
+		<p:menuitem value="Disciplina" outcome="/pages/private/cadastro_disciplina"
 			icon="fa fa-envelope">
 			<f:param name="i" value="3" />
 		</p:menuitem>
 	</p:tabMenu>
 	<div class="container">
-		<h4 class="titulo">Cadastrar Aluno:</h4>
+		<h4 class="titulo">Cadastrar Professor:</h4>
 	</div>
 	<h:form id="container">
 		<p:panelGrid>
 			<div class="ui-g">
 				<p:panelGrid columns="2" class="cell">
-					<span class="ui-inputgroup-addon" style="min-width: 4.5em;">Nome:</span>
+					<span class="ui-inputgroup-addon">Nome:</span>
 					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-					<h:inputText id="nome" value="#{turmaBean.entidade.nome}" />
+					<p:inputText id="nome" value="#{professorBean.entidade.nome}" />
 				</p:panelGrid>
 				<p:panelGrid columns="2" class="cell">
-					<span class="ui-inputgroup-addon" style="min-width: 4.5em;">Alunos:</span>
+					<span class="ui-inputgroup-addon">Email:</span>
 					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-					<p:selectManyMenu id="alunos" value="#{turmaBean.alunos}"
-						var="a" filter="true" filterMatchMode="contains" validator="alunoValidator" converter="alunoConverter"
-						showCheckbox="true" class="cell-2">
-						<f:selectItems value="#{alunoBean.entidades}" var="aluno"
-							itemLabel="#{aluno.nome}" itemValue="#{aluno}" />
-						<p:column>
-							<h:outputText value="#{a.id}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{a.nome}" />
-						</p:column>
-					</p:selectManyMenu>
+					<p:inputText id="email" value="#{professorBean.entidade.email}" />
 				</p:panelGrid>
+				<p:panelGrid columns="2" class="cell">
+					<span class="ui-inputgroup-addon">Senha:</span>
+					<span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+					<p:password id="password" value="#{professorBean.senha}" />
+				</p:panelGrid>
+
 			</div>
 			<p:commandButton class="btn" update="container" value="Salvar"
-				actionListener="#{turmaBean.save()}" />
+				actionListener="#{professorBean.save()}" />
 			<p:commandButton class="btn" update="container" value="Cancelar"
-				action="#{turmaBean.limpar()}" />
+				action="#{professorBean.limpar()}" />
 		</p:panelGrid>
 
-		<p:dataTable id="dataTableCarta" var="turma"
-			value="#{turmaBean.entidades}">
+		<p:dataTable id="dataTableCarta" var="professor"
+			value="#{professorBean.entidades}">
 			<p:column headerText="Id">
-				<h:outputText value="#{turma.id}" />
+				<h:outputText value="#{professor.id}" />
 			</p:column>
 			<p:column headerText="Nome">
-				<h:outputText value="#{turma.nome}" />
+				<h:outputText value="#{professor.nome}" />
 			</p:column>
-			<p:column headerText="Descrição">
-				<h:outputText value="#{turma.alunos}" />
+			<p:column headerText="Email">
+				<h:outputText value="#{professor.email}" />
+			</p:column>
+			<p:column headerText="Senha">
+				<h:outputText value="#{professor.hashSenha}" />
 			</p:column>
 			<p:column headerText="Remover">
-				<p:commandButton action="#{turmaBean.remove(turma)}"
+				<p:commandButton action="#{professorBean.remove(professor)}"
 					update="container" value="Remover" />
 			</p:column>
 			<p:column headerText="Editar">
-				<p:commandButton action="#{turmaBean.editar(turma.id)}"
+				<p:commandButton action="#{professorBean.editar(professor.id)}"
 					update="container" value="Editar" />
 			</p:column>
 
